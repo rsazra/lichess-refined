@@ -1,0 +1,34 @@
+.lobby {
+  ---cols: 1;
+  grid-area:main;
+  display:grid;
+  grid-template-areas:"app" "table" "side" "puzzle" "feed""about";
+  grid-gap:var(---block-gap)
+}
+
+@media(min-width: 499.3px) {
+  .lobby {
+    ---cols: 2;
+    grid-template-columns:repeat(2, 1fr);
+    grid-template-rows:auto repeat(4, fit-content(0)) 20em;
+    grid-template-areas:"app      app" "side     table" "puzzle    puzzle"  "feed     about"
+  }
+}
+
+@media(min-width: 799.3px) {
+  .lobby {
+    ---cols: 3;
+    grid-template-columns:repeat(3, 1fr);
+    grid-template-rows:12em repeat(2, fit-content(0)) auto fit-content(15em) repeat(2, fit-content(0)) minmax(0, 1fr);
+    grid-template-areas:"side  app     app" "table   app     app" "puzzle   feed    feed" "about    about    about"
+  }
+}
+
+@media(min-width: 1259.3px) {
+  .lobby {
+    ---cols: 4;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows:repeat(2, fit-content(0)) auto repeat(6, fit-content(0));
+    grid-template-areas:"side  app     app     puzzle" "feed table table about";
+  }
+}

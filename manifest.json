@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Lichess Refined",
+  "version": "1.0",
+  "description": "Modifies the lichess homepage to add user info and remove clutter.",
+  "icons": {
+    "48": "lire.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.lichess.org/"
+      ],
+      "css": [
+        "test.css"
+      ],
+      "js": [
+        "lire.js"
+      ]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "lire@rsazra.com"
+    }
+  }
+}
