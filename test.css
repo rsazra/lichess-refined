@@ -3,7 +3,49 @@
   grid-area:main;
   display:grid;
   grid-template-areas:"app" "table" "side" "puzzle" "feed""about";
-  grid-gap:var(---block-gap)
+  grid-gap:var(---block-gap);
+}
+
+.lobby__start {
+  flex-flow: row;
+  align-items: start;
+  margin: 0;
+}
+
+.lobby__start button {
+  width: 33%;
+  padding: 0.75em 0;
+  margin: 0;
+}
+
+.lobby__puzzle {
+  display: flex;
+  align-items: center;
+}
+
+.puzzle__anchor {
+  flex: 1;
+}
+
+.lobby__feed {
+  width: 100%;
+  aspect-ratio: 1/1;
+  padding-right: 5px;
+  display: flex;
+  align-self: flex-end;
+}
+
+.lobby__ratings {
+  flex: 0 0 auto;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+@media (hover: hover) {
+  .lobby__feed:not(:hover) {
+    overflow: clip;
+  }
 }
 
 @media(min-width: 499.3px) {
@@ -28,7 +70,9 @@
   .lobby {
     ---cols: 4;
     grid-template-columns:repeat(4, 1fr);
-    grid-template-rows:repeat(2, fit-content(0)) auto repeat(6, fit-content(0));
-    grid-template-areas:"side  app     app     puzzle" "feed table table about";
+    grid-template-rows:repeat(2, fit-content(0));
+    /* grid-template-areas:"side  app     app     puzzle" "feed table table about"; */
+    /* grid-template-areas:"side  app     app     puzzle" "feed app app puzzle" "feed table table puzzle" "about about about about"; */
+    grid-template-areas:"side  app     app     puzzle" "feed app app puzzle" "gap table table puzzle" "about about about about";
   }
 }

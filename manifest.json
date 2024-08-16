@@ -8,15 +8,9 @@
   },
   "content_scripts": [
     {
-      "matches": [
-        "*://*.lichess.org/"
-      ],
-      "css": [
-        "test.css"
-      ],
-      "js": [
-        "lire.js"
-      ]
+      "matches": ["*://*.lichess.org/"],
+      "css": ["test.css"],
+      "js": ["lire.js"]
     }
   ],
   "browser_specific_settings": {
