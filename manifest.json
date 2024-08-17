@@ -6,13 +6,18 @@
   "icons": {
     "48": "lire.png"
   },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Focused Lichess"
+  },
   "content_scripts": [
     {
       "matches": ["*://*.lichess.org/"],
       "css": ["test.css"],
-      "js": ["lire.js"]
+      "js": ["lire.js", "sidebar.js"]
     }
   ],
+  "permissions" : ["storage"],
   "browser_specific_settings": {
     "gecko": {
       "id": "lire@rsazra.com"

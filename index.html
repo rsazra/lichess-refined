@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html land="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LiRe - API Key</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
+      .status {
+        margin-top: 20px;
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Enter Your API Key</h2>
+      <label for="apiKey">API Key:</label>
+      <input type="text" id="apiKey" placeholder="Enter API Key" />
+      <button id="submit">Save</button>
+      <div class="status" id="status"></div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
