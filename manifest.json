@@ -13,8 +13,8 @@
   "content_scripts": [
     {
       "matches": ["*://*.lichess.org/"],
-      "css": ["test.css"],
-      "js": ["lire.js", "sidebar.js"]
+      "css": ["lire.css"],
+      "js": ["lire.js", "loggedin.js"]
     }
   ],
   "permissions" : ["storage"],

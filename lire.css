@@ -66,8 +66,8 @@
   .lobby {
     ---cols: 2;
     grid-template-columns:repeat(2, 1fr);
-    grid-template-rows:auto repeat(4, fit-content(0)) 20em;
-    grid-template-areas:"app      app" "side     table" "puzzle    puzzle"  "feed     about"
+    grid-template-rows:repeat(4, auto);
+    grid-template-areas:"app      app" "table     table" "side    puzzle"  "feed     about"
   }
 }
 
@@ -75,8 +75,8 @@
   .lobby {
     ---cols: 3;
     grid-template-columns:repeat(3, 1fr);
-    grid-template-rows:12em repeat(2, fit-content(0)) auto fit-content(15em) repeat(2, fit-content(0)) minmax(0, 1fr);
-    grid-template-areas:"side  app     app" "table   app     app" "puzzle   feed    feed" "about    about    about"
+    grid-template-rows:repeat(4, auto);
+    grid-template-areas:"side  app     app" "puzzle   app     app" "puzzle   table    table" "feed    about    about";
   }
 }
 
@@ -85,8 +85,6 @@
     ---cols: 4;
     grid-template-columns:repeat(4, 1fr);
     grid-template-rows:repeat(4, auto);
-    /* grid-template-areas:"side  app     app     puzzle" "feed table table about"; */
-    /* grid-template-areas:"side  app     app     puzzle" "feed app app puzzle" "feed table table puzzle" "about about about about"; */
     grid-template-areas:"side  app     app     puzzle" "feed app app puzzle" "gap table table puzzle" "about about about about";
   }
 }

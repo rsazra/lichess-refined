@@ -43,6 +43,14 @@ if (puzzleAnchor.tagName == "A") {
 }
 
 (async () => {
+  const table = await waitForElement(() => { return document.querySelector(".lobby__table") });
+  const playFriend = document.querySelector('.config_friend');
+  playFriend.textContent = 'Play a friend';
+  const playComputer = document.querySelector('.config_ai');
+  playComputer.textContent = 'Play scomputer';
+})();
+
+(async () => {
   const counters = await waitForElement(() => { return document.querySelector(".lobby__counters") });
   counters.remove();
 })();
@@ -87,7 +95,7 @@ publicData.then((data) => {
     const userIcon = document.createElement('img');
     userIcon.src = `https://lichess1.org/assets/______2/flair/img/${data.flair}.webp`;
     userIcon.classList.add('nobg', 'flair__pic');
-    userTag.appendChild(userIcon);
+    userTag?.appendChild(userIcon);
     const style = document.createElement('style');
     style.textContent = `
       #user_tag::after {
