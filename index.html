@@ -22,14 +22,22 @@
       }
       button {
         padding: 10px 20px;
-        background-color: #28a745;
         color: white;
         border: none;
         border-radius: 4px;
         cursor: pointer;
       }
-      button:hover {
+      #submit {
+        background-color: #28a745;
+      }
+      #submit:hover {
         background-color: #218838;
+      }
+      #delete {
+        background-color: #a72828;
+      }
+      #delete:hover {
+        background-color: #882121;
       }
       .status {
         margin-top: 20px;
@@ -43,6 +51,7 @@
       <label for="apiKey">API Key:</label>
       <input type="text" id="apiKey" placeholder="Enter API Key" />
       <button id="submit">Save</button>
+      <button id="delete">Delete key</button>
       <div class="status" id="status"></div>
     </div>
 
