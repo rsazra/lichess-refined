@@ -2,13 +2,13 @@
   "manifest_version": 3,
   "name": "Lichess Refined",
   "version": "1.0",
-  "description": "Modifies the lichess homepage to add user info and remove clutter.",
+  "description": "Modifies lichess.org homepage to add user info and remove clutter.",
   "icons": {
     "48": "lire.png"
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Focused Lichess"
+    "default_title": "Lichess Refined"
   },
   "content_scripts": [
     {

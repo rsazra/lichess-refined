@@ -2,10 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiKeyInput = document.getElementById("apiKey");
   const statusElement = document.getElementById("status");
 
-  // Load any saved API key from localStorage
+  // load saved
   chrome.storage.local.get(['apiKey'], (result) => {
     if (result.apiKey) {
-      apiKeyInput.value = result.apiKey; // Pre-fill the input with the saved key
+      apiKeyInput.value = result.apiKey; // pre-fill the input with the saved key
       statusElement.textContent = "Your saved API key is loaded.";
     }
     else {
@@ -14,14 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Handle form submission
+  // form submission
   document
     .getElementById("submit")
     .addEventListener("click", function (event) {
       const apiKey = apiKeyInput.value.trim();
 
+      // not gonna do any validation for now
       if (apiKey) {
-        // Save the API key to localStorage
         chrome.storage.local.set({ apiKey: apiKey });
         statusElement.textContent = "API key saved successfully!";
         statusElement.style.color = "green";
@@ -37,8 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
       apiKeyInput.value = '';
       chrome.storage.local.clear();
       statusElement.textContent = "API key deleted successfully.";
-      statusElement.style.color = "black";
+      statusElement.style.color = "red";
     });
-
-
 });

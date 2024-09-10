@@ -1,32 +1,42 @@
-.lobby {
-  ---cols: 1;
-  grid-area:main;
-  display:grid;
-  grid-template-areas:"app" "table" "side" "puzzle" "feed""about";
-  grid-gap:var(---block-gap);
+/* change orange colours to blue */
+:root {
+  --c-accent: var(--c-primary);
+  --m-accent--fade-80: var(--m-primary--fade-80);
+  --m-accent_white--mix-80: var(--m-primary_white--mix-80);
 }
 
+/* default layout for smallest screens, single column */
+.lobby {
+  ---cols: 1;
+  grid-area: main;
+  display: grid;
+  grid-template-areas: "app" "table" "side" "puzzle" "feed""about";
+  grid-gap: var(---block-gap);
+}
+
+/* custom game buttons container */
 .lobby__start {
   flex-flow: row;
   align-items: start;
   margin: 0;
 }
-
 .lobby__start button {
   width: 33%;
   padding: 0.75em 0;
   margin: 0;
 }
 
+/* div that contains puzzle */
 .lobby__puzzle {
   display: flex;
   align-items: center;
 }
-
+/* the whole puzzle area is one <a> */
 .puzzle__anchor {
   flex: 1;
 }
 
+/* using aspect ratio doesn't feel great, but not sure what a better method of capping the height would be */
 .lobby__feed {
   width: 100%;
   aspect-ratio: 1/1;
@@ -34,6 +44,7 @@
   display: flex;
   align-self: flex-end;
   align-items: flex-start;
+  background: none;
 }
 
 .lobby__ratings {
@@ -41,6 +52,20 @@
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+/* not sure why they used a dash in this one but i'll roll with it */
+.tour-spotlight:hover {
+  opacity: .8;
+  background-image: linear-gradient(to bottom, var(--c-metal-top), var(--c-metal-bottom));
+}
+.rating-display {
+  background-image: none;
+}
+.green {
+  color: #2A865C;
+}
+.red {
+  color: #c0222a;
 }
 
 .flair__pic {
@@ -51,17 +76,17 @@
   padding: 3px;
   opacity: 80%;
 }
-
 .no__after::after {
   content: none;
 }
 
-@media (hover: hover) {
-  .lobby__feed:not(:hover) {
-    overflow: clip;
+/* center rating displays when single column */
+@media(max-width: 499.3px) {
+  .tour-spotlight {
+    justify-content: center;
   }
 }
-
+/* modifications to layouts for various view widths */
 @media(min-width: 499.3px) {
   .lobby {
     ---cols: 2;
@@ -70,7 +95,6 @@
     grid-template-areas:"app      app" "table     table" "side    puzzle"  "feed     about"
   }
 }
-
 @media(min-width: 799.3px) {
   .lobby {
     ---cols: 3;
@@ -79,12 +103,16 @@
     grid-template-areas:"side  app     app" "puzzle   app     app" "puzzle   table    table" "feed    about    about";
   }
 }
-
 @media(min-width: 1259.3px) {
   .lobby {
     ---cols: 4;
     grid-template-columns:repeat(4, 1fr);
     grid-template-rows:repeat(4, auto);
     grid-template-areas:"side  app     app     puzzle" "feed app app puzzle" "gap table table puzzle" "about about about about";
+  }
+  /* they only had these vertical at full width */
+  .lobby__counters {
+    position: relative;
+    flex-flow: row;
   }
 }

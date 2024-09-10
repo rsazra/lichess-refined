@@ -25,13 +25,12 @@ function waitForElement(selector) {
 }
 
 
-// HTML changes
+// remove unneeded elements
 const toDelete = document.querySelectorAll('.lobby__tv, .lobby__blog,\
   .lobby__leaderboard, .lobby__winners, .lobby__tournaments-simuls, \
-  .lobby__support, .lobby__counters, .lobby__streams, .lobby__timeline');
+  .lobby__support, .lobby__streams, .lobby__timeline');
 toDelete.forEach(element => { element.remove() });
-//move puzzle into a div
-// kind of bugged. should check if this has already been done.
+// move puzzle into a div for visual purposes
 const puzzleAnchor = document.querySelector('.lobby__puzzle');
 if (puzzleAnchor.tagName == "A") {
   const puzzleDiv = document.createElement('div');
@@ -42,19 +41,16 @@ if (puzzleAnchor.tagName == "A") {
   puzzleDiv.classList.add('lobby__puzzle');
 }
 
+// change new custom game verbiage so text fits buttons better
 (async () => {
   const table = await waitForElement(() => { return document.querySelector(".lobby__table") });
   const playFriend = document.querySelector('.config_friend');
   playFriend.textContent = 'Play a friend';
   const playComputer = document.querySelector('.config_ai');
-  playComputer.textContent = 'Play scomputer';
+  playComputer.textContent = 'Play computer';
 })();
 
-(async () => {
-  const counters = await waitForElement(() => { return document.querySelector(".lobby__counters") });
-  counters.remove();
-})();
-
+// api call for puzzle rating and flair (emoji)
 const publicData = new Promise((resolve, reject) => {
   chrome.storage.local.get(['apiKey']).then((result) => {
     const apiKey = result.apiKey;
@@ -76,7 +72,7 @@ const publicData = new Promise((resolve, reject) => {
   });
 });
 
-// add puzzle rating
+// try adding puzzle rating
 (async () => {
   const puzzleRating = await waitForElement(() => {
     const spans = document.querySelectorAll("span");
@@ -88,7 +84,7 @@ const publicData = new Promise((resolve, reject) => {
     .catch(puzzleRating.innerHTML = `Add your API Key to see your puzzle rating!`);
 })();
 
-// flair stuff
+// try changing image in top right to flair
 publicData.then((data) => {
   if (data.flair) {
     const userTag = document.querySelector('#user_tag');

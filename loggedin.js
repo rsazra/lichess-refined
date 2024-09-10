@@ -1,20 +1,22 @@
+// check if logged in before trying these changes
 const userTag = document.querySelector('#user_tag');
 const username = userTag?.textContent;
 
-// new sidebar component with ratings and streaks (linking to profile page)
 if (username) {
+  // switch spotlights section (tournaments to a ratings display)
   const lobbyRatings = document.querySelector('.lobby__spotlights, .lobby__ratings');
   if (lobbyRatings.classList.contains("lobby__spotlights")) {
     lobbyRatings.classList.remove('lobby__spotlights');
     lobbyRatings.classList.add('lobby__ratings');
   }
-  // need to watch for new tournaments and such being added
+  // ensure tournaments aren't added to list
   const ratingsObserver = new MutationObserver((mutations, obs) => {
     const lobbyRatingsChildren = lobbyRatings.childNodes;
     lobbyRatingsChildren.forEach(child => { if (!child.classList.contains('rating-display')) child.remove() });
   });
   ratingsObserver.observe(lobbyRatings, { childList: true });
-  // getting sidebar data
+
+  // api request for rating/streak data
   async function getRating(username, format) {
     const url = `https://lichess.org/api/user/${username}/perf/${format}`;
 
@@ -40,14 +42,14 @@ if (username) {
       return null;
     }
   }
-  const formats = ['bullet', 'blitz', 'rapid', 'classical'];
+  const formats = ['Bullet', 'Blitz', 'Rapid', 'Classical'];
   const dataIcons = ['', '', '', ''];
   const perfs = ['1', '2', '6', '3'];
   const toAdd = [];
 
   async function makeRatingDisplay() {
     for (const i in formats) {
-      const ratingData = await getRating(username, formats[i]);
+      const ratingData = await getRating(username, formats[i].toLowerCase());
       if (ratingData) {
         const ratingDisplay = document.createElement("a");
         ratingDisplay.href = `https://lichess.org/@/${username}/search?perf=${perfs[i]}`;
@@ -61,11 +63,11 @@ if (username) {
         <i data-icon="${dataIcons[i]}" class="img"></i>\
         <span class="content">
           <span class="name">
-            <strong>${Math.round(ratingData[0])}${provisional ? '?' : ''}</strong>
+            <strong>${formats[i]}: ${Math.round(ratingData[0])}${provisional ? '?' : ''}</strong>
           </span>
           <span class="more">
-            ${streak == 0 ? '-' : streak} ${winStreak ? ' win streak' : ''} ${lossStreak ? '  loss streak' : ''} \
-            ${playStreak ? '• ' + playStreak + ' play streak' : ''}
+            <strong class="${streak == 0 ? '' : (winStreak ? 'green' : 'red')}">${streak == 0 ? '-' : Math.abs(streak)} ${winStreak ? ' winning streak' : ''} ${lossStreak ? '  losing streak' : ''}</strong> \
+            ${playStreak ? '• ' + playStreak + ' this session' : ''}
           </span>
         </span>
         `;
