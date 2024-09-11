@@ -4,7 +4,8 @@
   "version": "1.0",
   "description": "Modifies lichess.org homepage to add user info and remove clutter.",
   "icons": {
-    "48": "lire.png"
+    "48": "lire48.png",
+    "128": "lire128.png"
   },
   "action": {
     "default_popup": "index.html",
