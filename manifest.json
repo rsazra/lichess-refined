@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Lichess Refined",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Modifies lichess.org homepage to add user info and remove clutter.",
   "icons": {
     "48": "lire48.png",
