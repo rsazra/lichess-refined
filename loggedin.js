@@ -43,7 +43,7 @@ if (username) {
     }
   }
   const formats = ['Bullet', 'Blitz', 'Rapid', 'Classical'];
-  const dataIcons = ['', '', '', ''];
+  const dataIcons = ['', '', '', '']; // UPDATE
   const perfs = ['1', '2', '6', '3'];
   const toAdd = [];
 
@@ -66,7 +66,7 @@ if (username) {
             <strong>${formats[i]}: ${Math.round(ratingData[0])}${provisional ? '?' : ''}</strong>
           </span>
           <span class="more">
-            <strong class="${streak == 0 ? '' : (winStreak ? 'green' : 'red')}">${streak == 0 ? '-' : Math.abs(streak)} ${winStreak ? ' winning streak' : ''} ${lossStreak ? '  losing streak' : ''}</strong> \
+            <strong class="${streak == 0 ? '' : (winStreak ? 'green' : 'red')}">${streak == 0 ? 'No streak' : Math.abs(streak)} ${winStreak ? ' winning streak' : ''} ${lossStreak ? '  losing streak' : ''}</strong> \
             ${playStreak ? '• ' + playStreak + ' this session' : ''}
           </span>
         </span>
